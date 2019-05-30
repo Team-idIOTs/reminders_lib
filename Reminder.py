@@ -31,6 +31,11 @@ class Reminder():
         }
         return json_data
 
+
+    def update(self, **kwargs):
+        for key, value in kwargs.items():
+            setattr(self, key, value)
+
     @classmethod
     def from_dict(clss, data):
         return Reminder(data['task_name'], data['start_time'], data['days'], data['id'], data['updated'], data['end_time'], data['interval'])
