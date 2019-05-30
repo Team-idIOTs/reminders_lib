@@ -10,9 +10,9 @@ class ReminderScheduler():
     def schedule_task(self, task):
         for key, reminder in task.reminders.items():
             if (reminder.updated):
-                self.schedule_reminder(reminder, task.audio)
+                self.schedule_reminder(reminder)
 
-    def schedule_reminder(self, reminder, audio):
+    def schedule_reminder(self, reminder):
         if (type(audio) == str):
 
             # Check if it already exists.
@@ -37,7 +37,7 @@ class ReminderScheduler():
                 # If it is not at the end yet, then keep scheduling
                 while(end_hour > hour or ((end_hour == hour) and (end_min > min))):
                     job = self.cron.new(command='python ' + self.ttsdir + " " + reminder.task_name.replace(" ", "") \
-                                              +  " " + audio, comment=comment)
+                                              +  " " , comment=comment)
                     job.hour.on(hour)
                     job.minute.on(min)
                     job.dow.on(*reminder.days)
