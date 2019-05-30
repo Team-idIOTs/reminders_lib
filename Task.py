@@ -16,12 +16,7 @@ class Task():
         self.reminders[id] = Reminder(self.name, start_time, days, id, updated = True, end_time = end_time, interval = interval)
 
     def update_reminder(self, id, **kwargs):
-        self.reminders[id].updated = True
-        self.updated = True
-        reminder_json = self.reminders[id].to_json()
-        for key, value in kwargs.items():
-            if (key in reminder_json.keys()):
-                reminder_json[key] = value
+        self.reminders[id].update(**kwargs)
 
     def to_json(self):
         json_str = {
