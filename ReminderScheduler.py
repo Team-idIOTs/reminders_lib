@@ -3,7 +3,7 @@ from Reminder import *
 
 class ReminderScheduler():
 
-    def __init__(self, user="pi", ttsdir="../ttsscript.py"):
+    def __init__(self, user="pi", ttsdir="/home/pi/Design_Competition/raspi_reminders/ttsscript.py"):
         self.cron = CronTab(user=user)
         self.ttsdir=ttsdir
 
