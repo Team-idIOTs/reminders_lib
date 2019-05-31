@@ -13,8 +13,6 @@ class ReminderScheduler():
                 self.schedule_reminder(reminder)
 
     def schedule_reminder(self, reminder):
-        if (type(audio) == str):
-
             # Check if it already exists.
             comment = str(reminder.task_name + str(reminder.id))
             found = False
@@ -53,4 +51,4 @@ class ReminderScheduler():
                     if (hour > 23):
                         break
 
-        self.cron.write()
+            self.cron.write()
