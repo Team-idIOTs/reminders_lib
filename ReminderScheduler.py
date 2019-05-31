@@ -34,7 +34,7 @@ class ReminderScheduler():
 
                 # If it is not at the end yet, then keep scheduling
                 while(end_hour > hour or ((end_hour == hour) and (end_min > min))):
-                    job = self.cron.new(command='python ' + self.ttsdir + " " + reminder.task_name.replace(" ", "") \
+                    job = self.cron.new(command='python3 ' + self.ttsdir + " /home/pi/sounds/" + reminder.task_name.replace(" ", "") \
                                               +  " " , comment=comment)
                     job.hour.on(hour)
                     job.minute.on(min)
