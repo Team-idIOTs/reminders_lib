@@ -1,4 +1,6 @@
 from Reminder import *
+from gtts import gTTS
+import os
 
 class Task():
 
@@ -30,6 +32,17 @@ class Task():
         for key, value in self.reminders.items():
             json_str['reminders'][key] = value.to_json()
         return json_str
+
+    def make_audio(self, storage):
+        tts = gTTS(self.audio)
+        file_name = self.name.replace(" ", "") + ".mp3"
+        tts.save(file_name)
+        storage.child(file_name).put(file_name)
+        os.remove(file_name)
+
+    def get_audio_name(self):
+        return self.name.replace(" ", "") + ".mp3"
+
 
     @classmethod
     def from_dict(clss, data):
